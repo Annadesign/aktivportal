@@ -1,0 +1,24 @@
+<div class="ibox">
+  <div class="ibox-content">
+    <div class="panel-body">  
+      <p id="notice"><%= notice %></p>
+
+      <h4>Aktiviteter</h4>
+      <div id="events" class="list-group">
+        <% @events.each do |event| %>
+          <div id="<%= dom_id(event) %>" class="list-group-item">
+            <%= link_to event.title, edit_admin_event_path(event) %>  
+            <span class="badge badge-danger">
+                <%= link_to 'Slett', admin_event_path(event), method: :delete, data: { confirm: 'Er du sikker?' }, :style => 'color:#fff;' %>  
+            </span>
+          </div>
+        <% end %>
+      </div>
+     
+      <br>
+
+      <%= link_to 'Ny aktivitet', new_admin_event_path(), :class => 'btn btn-sm btn-info' %>
+
+    </div>
+  </div>
+</div>

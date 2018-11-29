@@ -1,0 +1,42 @@
+		<div class="ibox">
+        <div class="ibox-content">
+        <div class="panel-body">	
+ 
+
+			<%= form_for [:admin, @tag] do |f| %>
+			<div class="form-group">
+				<p><%= f.text_field :name, placeholder: 'Legge til tags', :class=> 'form-corntrol' %></p>
+				<p><%= f.submit 'Lagre tags', :class => "btn btn-sm btn-primary" %></p>
+			</div>
+			<% end %>
+
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Navn</th>
+						<th>Status</th>
+						
+						<th>Handlinger</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @tags.each do |tag| %>
+					<tr>
+						<td><%= tag.name %></td>
+						<td><%= status_converter(tag.in_use?, truthy: 'I bruk', falsey: 'Ikke i bruk') %></td>
+						<td>
+							<%= link_to edit_admin_tag_path(tag) do %>
+								<button type="button" class="btn btn-sm btn-primary">Edit</button>
+							<% end %>
+							<%= create_deletable_button tag %>
+						</td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+
+		</div>
+	</div>
+</div>
+
+

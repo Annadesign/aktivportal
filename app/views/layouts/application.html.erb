@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Krohnstad Montessori</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">  
+    <meta name="turbolinks-visit-control" content="reload"> 
+    <%= csrf_meta_tags %>
+    <meta name="description" content="Krohnstad, Montessori, barnehage">
+    <%= stylesheet_link_tag 'front', media: 'all', 'data-turbolinks-track' => true %>
+    <link rel="stylesheet" href="https://use.typekit.net/cwp1ouv.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <%= javascript_include_tag 'front', 'data-turbolinks-track' => true %>
+  </head>
+  <body>
+  <% if flash[:notice] %>
+  <div class="alert alert-success alert-dismissable">
+      <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+      <%= flash[:notice] %>      
+  </div>
+  <% end %>
+  <% if flash[:alert] %>
+  <div class="alert alert-danger alert-dismissable">
+      <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+      <%= flash[:alert] %>
+  </div>
+  <% end %>
+ 
+  <%#= render 'nav' %>
+ 
+  <div class="go-top">
+   <i class="fa fa-angle-up"></i>
+  </div>
+
+  <%= yield %>
+
+  <footer class="footer-light">
+    <div class="text-center container">
+      <div class="row">
+        <div class="col-md-12">
+          <h2>AKTIVPORTALEN</h2>
+          <p>6400 Molde</p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div style="height: 60px" class=""></div>
+          <ul class="list-inline text-center footer-menu">
+            <li><a href="#">Personvern</a></li>
+          </ul>
+          <p class="footer-message">OPPHAVSRETT © <%= Date.today.year %> AKTIVPORTALEN</p>
+        </div>
+      </div>
+      <div class="clear"></div>
+    </div>
+  </footer>
+
+  <script type="text/javascript">
+      objectFitImages();
+      jarallax(document.querySelectorAll('.jarallax'));
+      jarallax(document.querySelectorAll('.jarallax-keep-img'), {
+          keepImg: true,
+      });
+  </script>
+<script>
+
+</script>
+  </body>
+</html>

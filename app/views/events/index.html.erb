@@ -1,0 +1,36 @@
+<h1>Aktivportalen</h1>
+
+<h2>Aktiviteter</h2>
+
+
+
+ 
+ 
+      <div class="row">
+        <% @events.each do |event| %>
+          <div class="col-sm-4 col-md-3">        
+            <div class="portfolio-item">
+            	<%=  link_to events_path(event) do  %>
+                  	<%= event.title %>
+                <% end %>  
+            </div>				
+				    
+            	<div class="portfolio-desc">
+              
+              	<p class="text-muted">
+
+			      <div>
+			      <% event.tags.each do |tag| %>
+			        <%= link_to tag.name, events_path(tag: tag.name), :class => 'btn btn-tag btn-tag' %>
+			      <% end %>
+			      </div>
+					     
+              	</p>
+              </div>
+            </div>
+          </div>
+   
+		  <% end %>
+      </div>
+ 
+

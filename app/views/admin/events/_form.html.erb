@@ -1,0 +1,139 @@
+<input type="hidden" id="eventID" value="<%= @event.id %>">
+<%= form_for [:admin, @event], html: { multipart: true } do |f| %>
+  <% if @event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this admin_article from being saved:</h2>
+
+      <ul>
+      <% @event.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="col-md-9">
+
+ 
+      <div class="form-group">
+          <%= f.label :title, 'Tittel', :class => "" %>
+          <%= f.text_field :title, :class => 'form-control', :placeholder => "Tittel" %>
+        </div>
+ 
+   
+ 
+    <div class="form-group">
+      <%= f.label :summary, 'Ingress' %><br>
+      <%= f.text_area :summary, :class => "form-control" %>
+    </div>
+    <div class="field">
+      <%= f.label :content, 'Brødtekst' %><br>
+      <%= f.text_area :content, :class => "summernote" %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :tag_ids, 'Tags', :class => "" %>
+      <%= f.select :tag_ids, Tag.all.collect {|t| [t.name, t.id]}, {prompt: ''}, multiple: :true, :class => "form-control chosen-select info" %>
+    </div>      
+
+  </div>
+ 
+  <!-- aside right-->
+  <div class="col-sm-3">
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <%= f.submit 'Lagre', :class => "btn btn-primary btn-block" %>
+      </div>
+      <div class="panel-body">
+        <div class="checkbox checkbox-primary">
+          <%= f.check_box :publish, :class => "" %>
+          <%= f.label :publish, 'Publisere' %>
+        </div>
+      </div>
+
+      <div class="panel-footer">
+        <span class="text-muted small">
+          Publisert av: <% if @event.user.present? %><%= @event.user.fullname %><% end %><br>
+          Opprettet: <%= @event.created_at.to_s(:long) if @event.created_at? %><br>
+          Sist oppdatert: <%= @event.updated_at.to_s(:long) if @event.updated_at? %>
+        </span> 
+      </div>
+    </div>
+
+
+  <% end %>
+   <div class="panel panel-default">
+    <div class="panel-heading">
+      Vedlegg (pdf)
+    </div>
+    <div class="panel-body">
+        <table>
+ 
+        </table>
+    </div>
+    <div class="panel-footer">
+      <%= link_to 'Nytt bilde', new_admin_image_url(:event_id => @event.id)  , :class => 'btn btn-sm btn-warning btn-block' %>
+    </div>  
+  </div>
+
+  </div>
+  
+<script type="text/javascript">
+        $("#image-size").ionRangeSlider({
+          min: 100,
+          max: 1000,
+          from: 550
+      });
+      </script>
+<script type="text/javascript">
+  $(function() {
+    $('.summernote').summernote({
+      height: 400,
+      tabsize: 4,
+      toolbar: [
+                 ["style", ["style"]],
+                 ["style", ["bold", "italic", "underline", "clear"]],
+                 ["table", ["table"]],
+                 ["para", ["ul", "ol", "paragraph"]],
+                 ['extensions', ['gallery']],
+                 ['insert', ['videoAttributes']],  
+                 ['insert', ['link']],  
+                 ['insert', ['hr']]
+                 
+             ],
+         
+      });
+    });
+  </script>
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $("#article_image").on('change', function() {
+        var countFiles = $(this)[0].files.length;
+        var imgPath = $(this)[0].value;
+        var extn = imgPath.substring(imgPath.lastIndexOf('.') + 1).toLowerCase();
+        var image_holder = $("#image-holder");
+        image_holder.empty();
+        if (extn == "gif" || extn == "png" || extn == "jpg" || extn == "jpeg") {
+          if (typeof(FileReader) != "undefined") {
+            //loop for each file selected for uploaded.
+            for (var i = 0; i < countFiles; i++) 
+            {
+              var reader = new FileReader();
+              reader.onload = function(e) {
+                $("<img />", {
+                  "src": e.target.result,
+                  "class": "thumb-image"
+                }).appendTo(image_holder);
+              }
+              image_holder.show();
+              reader.readAsDataURL($(this)[0].files[i]);
+            }
+          } else {
+            alert("This browser does not support FileReader.");
+          }
+        } else {
+          alert("Pls select only images");
+        }
+      });
+    });
+  </script>
