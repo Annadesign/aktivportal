@@ -31,7 +31,7 @@ Rails.application.routes.draw do
 
   resources :sessions, only: [:index, :create, :destroy]
   
-  resources :events, only: [:index]
+  resources :events, only: [:index, :show]
 
 
 

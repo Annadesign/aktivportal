@@ -13,14 +13,26 @@
   <% end %>
   <div class="col-md-9">
 
- 
-      <div class="form-group">
+    <div class="row">
+      
+      <div class="col-md-9">
+      
+        <div class="form-group">
           <%= f.label :title, 'Tittel', :class => "" %>
           <%= f.text_field :title, :class => 'form-control', :placeholder => "Tittel" %>
         </div>
+      </div>
  
-   
- 
+      <div class="col-md-3">
+        <div class="form-group" id="data_1">
+          <label class="font-normal">Dato</label>
+          <div class="input-group date">
+            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+            <input type="text" class="form-control" value="">
+          </div>
+        </div>
+      </div>
+    </div>
     <div class="form-group">
       <%= f.label :summary, 'Ingress' %><br>
       <%= f.text_area :summary, :class => "form-control" %>
@@ -60,11 +72,49 @@
       </div>
     </div>
 
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        Hovedbilde
+      </div>
+      <div class="panel-body">
+      
+        <div class="img-responsive" id="image-holder">
+          <%= image_tag @event.image_url(:thumb) if @event.image?%>
+        </div>
+      
+      </div>
+      <div class="panel-footer">
+        <%= f.label :image, :class => "btn btn-info btn-block" do %>
+          <%= f.file_field :image, :class => 'hide'%>Velg bilde
+        <% end %>  
+      </div>  
+    </div>
+
+   <div class="panel panel-default">
+    <div class="panel-heading">
+        Plassering på kartet
+    </div>
+    <div class="panel-body">
+
+        <div class="form-group">
+          <%= f.label :lng, 'Tittel', :class => "" %>
+          <%= f.text_field :lng, :class => 'form-control', :placeholder => "Lengdegrad" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :lat, 'Tittel', :class => "" %>
+          <%= f.text_field :lat, :class => 'form-control', :placeholder => "Breddegrad" %>
+        </div>
+
+    </div>
+    <div class="panel-footer">
+      
+    </div>  
+  </div>    
 
   <% end %>
    <div class="panel panel-default">
     <div class="panel-heading">
-      Vedlegg (pdf)
+     
     </div>
     <div class="panel-body">
         <table>
@@ -72,7 +122,7 @@
         </table>
     </div>
     <div class="panel-footer">
-      <%= link_to 'Nytt bilde', new_admin_image_url(:event_id => @event.id)  , :class => 'btn btn-sm btn-warning btn-block' %>
+     
     </div>  
   </div>
 
@@ -137,3 +187,37 @@
       });
     });
   </script>
+<script type="text/javascript">
+  var mem = $('#data_1 .input-group.date').datepicker({
+        todayBtn: "linked",
+        keyboardNavigation: false,
+        forceParse: false,
+        calendarWeeks: true,
+        autoclose: true
+    });
+
+    var yearsAgo = new Date();
+    yearsAgo.setFullYear(yearsAgo.getFullYear() - 20);
+
+    $('#selector').datepicker('setDate', yearsAgo );
+  
+
+   var config = {
+        '.chosen-select': {},
+        '.chosen-select-deselect': { allow_single_deselect: true },
+        '.chosen-select-no-single': { disable_search_threshold: 10 },
+        '.chosen-select-no-results': { no_results_text: 'Oops, ingenting funnet!' },
+        '.chosen-select-width': { width: "95%" }
+    }
+    for (var selector in config) {
+        $(selector).chosen(config[selector]);
+    }
+
+    $(".select2_demo_1").select2();
+    $(".select2_demo_2").select2();
+    $(".select2_demo_3").select2({
+        placeholder: "Select a state",
+        allowClear: true
+    });
+
+</script>

@@ -62,7 +62,7 @@ class Admin::EventsController < Admin::ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:id, :title, :summary, :content, :date, :lng, :lat, :user_id, :publish, tag_ids: [])
+    params.require(:event).permit(:id, :title, :summary, :content, :date, :lng, :lat, :user_id, :publish, :image, tag_ids: [])
   end
 
 end
