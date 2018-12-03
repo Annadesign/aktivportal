@@ -2,13 +2,13 @@
 /*
  * Manifest file for front scripts, to be compiled into front.js
  *
- //= require jquery
-//= require jquery_ujs
-//= require turbolinks
- *= require packages
- *= require moment.min
- *= require fullcalendar
- *= require nb.js
+*= require front/jquery.min
+*= require front/bootstrap.bundle.min
+*= require front/jqBootstrapValidation
+*= require front/contact_me
+*= require front/select2.min
+*= require front/custom
+
  *= require_self
- *= require_tree ./front
+
  */

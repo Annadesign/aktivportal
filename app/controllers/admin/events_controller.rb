@@ -30,16 +30,13 @@ class Admin::EventsController < Admin::ApplicationController
 
   def edit
     @events = Event.all
-    @event = Event.find(params[:id])
- 
-    
+    @event = Event.find(params[:id])    
   end
 
   def update
     @event = Event.find(params[:id])
  
-    if @event.update(event_params)
-  
+    if @event.update(event_params)  
       redirect_to edit_admin_event_url(@event), notice: 'Artikkelen: ' + event_params[:title] + ' ble oppdatert!'
     else
       flash[:alert] = 'Det var et problem med oppdateringen'
@@ -55,14 +52,13 @@ class Admin::EventsController < Admin::ApplicationController
   def destroy
     @event = Event.find(params[:id])
     @event.destroy
-    redirect_to admin_events_url, notice: 'Artikkelen ble slettet!'
+    redirect_to admin_events_url, notice: 'Aktiviteten ble slettet!'
   end
-
 
   private
 
   def event_params
-    params.require(:event).permit(:id, :title, :summary, :content, :date, :lng, :lat, :user_id, :publish, :image, tag_ids: [])
+    params.require(:event).permit(:id, :title, :summary, :content, :date, :lng, :lat, :location, :user_id, :publish, :image, :category_id, tag_ids: [])
   end
 
 end

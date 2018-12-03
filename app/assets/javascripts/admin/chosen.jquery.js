@@ -510,7 +510,7 @@
             return true;
         };
 
-        AbstractChosen.default_multiple_text = "Velg foresatte";
+        AbstractChosen.default_multiple_text = "Velg tagger";
 
         AbstractChosen.default_single_text = "Select an Option";
 

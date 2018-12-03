@@ -15,8 +15,7 @@
 
     <div class="row">
       
-      <div class="col-md-9">
-      
+      <div class="col-md-9">      
         <div class="form-group">
           <%= f.label :title, 'Tittel', :class => "" %>
           <%= f.text_field :title, :class => 'form-control', :placeholder => "Tittel" %>
@@ -24,13 +23,28 @@
       </div>
  
       <div class="col-md-3">
-        <div class="form-group" id="data_1">
-          <label class="font-normal">Dato</label>
+        <div class="form-group" id="data_0">
+          <%= f.label :date, 'Dato', :class => "" %>
           <div class="input-group date">
             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-            <input type="text" class="form-control" value="">
+            <%= f.text_field :date, :class => 'form-control' %>
           </div>
         </div>
+      
+      </div>  
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <%= f.label :category_id, 'Kategori', :class => "" %>
+          <%= f.select :category_id, Category.all.collect {|c| [c.title, c.id]}, {prompt: 'Velg kategori'}, :class => "form-control" %>
+        </div>        
+      </div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <%= f.label :tag_ids, 'Tags', :class => "" %>
+          <%= f.select :tag_ids, Tag.all.collect {|t| [t.name, t.id]}, {prompt: ''}, multiple: :true, :class => "form-control chosen-select info" %>
+        </div>             
       </div>
     </div>
     <div class="form-group">
@@ -42,10 +56,7 @@
       <%= f.text_area :content, :class => "summernote" %>
     </div>
 
-    <div class="form-group">
-      <%= f.label :tag_ids, 'Tags', :class => "" %>
-      <%= f.select :tag_ids, Tag.all.collect {|t| [t.name, t.id]}, {prompt: ''}, multiple: :true, :class => "form-control chosen-select info" %>
-    </div>      
+ 
 
   </div>
  
@@ -65,7 +76,7 @@
 
       <div class="panel-footer">
         <span class="text-muted small">
-          Publisert av: <% if @event.user.present? %><%= @event.user.fullname %><% end %><br>
+          Publisert av: <% if @event.organization.present? %><%= @event.organization.name %><% end %><br>
           Opprettet: <%= @event.created_at.to_s(:long) if @event.created_at? %><br>
           Sist oppdatert: <%= @event.updated_at.to_s(:long) if @event.updated_at? %>
         </span> 
@@ -95,13 +106,16 @@
         Plassering på kartet
     </div>
     <div class="panel-body">
-
         <div class="form-group">
-          <%= f.label :lng, 'Tittel', :class => "" %>
+          <%= f.label :location, 'Sted', :class => "" %>
+          <%= f.text_field :location, :class => 'form-control', :placeholder => "Sted" %>
+        </div>
+        <div class="form-group">
+          <%= f.label :lng, 'Lengdegrad', :class => "" %>
           <%= f.text_field :lng, :class => 'form-control', :placeholder => "Lengdegrad" %>
         </div>
         <div class="form-group">
-          <%= f.label :lat, 'Tittel', :class => "" %>
+          <%= f.label :lat, 'Breddegrad', :class => "" %>
           <%= f.text_field :lat, :class => 'form-control', :placeholder => "Breddegrad" %>
         </div>
 
@@ -156,10 +170,8 @@
               
                  ['insert', ['videoAttributes']],  
                  ['insert', ['link']],  
-                 ['insert', ['hr']]
-                 
-             ],
-         
+                 ['insert', ['hr']]  
+             ],        
       });
     });
   </script>
@@ -196,7 +208,7 @@
     });
   </script>
 <script type="text/javascript">
-  var mem = $('#data_1 .input-group.date').datepicker({
+ $('#data_1 .input-group.date').datepicker({
         todayBtn: "linked",
         keyboardNavigation: false,
         forceParse: false,
@@ -204,11 +216,15 @@
         autoclose: true
     });
 
-    var yearsAgo = new Date();
-    yearsAgo.setFullYear(yearsAgo.getFullYear() - 20);
+   $('#data_2 .input-group.date').datepicker({
+      startView: 1,
+      todayBtn: "linked",
+      keyboardNavigation: false,
+      forceParse: false,
+      autoclose: true,
+      format: "dd/mm/yyyy"
+  });
 
-    $('#selector').datepicker('setDate', yearsAgo );
-  
 
    var config = {
         '.chosen-select': {},
@@ -220,14 +236,6 @@
     for (var selector in config) {
         $(selector).chosen(config[selector]);
     }
-
-    $(".select2_demo_1").select2();
-    $(".select2_demo_2").select2();
-    $(".select2_demo_3").select2({
-        placeholder: "Select a state",
-        allowClear: true
-    });
-
 </script>
 
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_GEwouXTQg2YWEavFAE3R4uZpouYiK0U
@@ -239,8 +247,6 @@
       function initMap() {
         var aktiv = {lat: 62.740057, lng: 7.155903};
 
-        // Create a map object and specify the DOM element
-        // for display.
         var map = new google.maps.Map(document.getElementById('map'), {
           center: aktiv,
           zoom: 10
@@ -250,7 +256,6 @@
           content: '<%= @event.summary.html_safe if @event.summary? %>'
         });
 
-        // Create a marker and set its position.
         var marker = new google.maps.Marker({
           map: map,
           position: {lat:<%= @event.lat %>, lng:<%= @event.lng %>},

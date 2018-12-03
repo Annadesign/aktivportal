@@ -29,6 +29,9 @@ gem 'jbuilder', '~> 2.5'
 gem 'jquery-rails', '~> 4.3.1'
 gem 'jquery-ui-rails', '~> 5.0', '>= 5.0.5'
 
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.14.30'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
@@ -38,6 +41,9 @@ gem 'rmagick', '~> 2.16'
 gem 'carrierwave', '~> 1.2', '>= 1.2.2'
 
 gem 'fog'
+
+
+gem 'ancestry', '~> 2.1'
 
 
 # Use Capistrano for deployment

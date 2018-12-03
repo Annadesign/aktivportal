@@ -14,9 +14,8 @@
  *= require inspinia
  *= require moment.min
  *= require fullcalendar 
- *= require daterangepicker
+ 
  *= require nb.js
- *= require bootstrap-colorselector.min
  *= require_self
  *= require_tree ./admin
  */

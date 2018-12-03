@@ -28,14 +28,22 @@
                         <i class="fa fa-th"></i> Oversikt
                     <% end %>
                 </li>
-                <li class="<%= is_active_controller('admin/userss') %>">
+                <li class="<%= is_active_controller('admin/users') %>">
                     <%= link_to admin_users_path do %>
-                        <i class="fa fa-user-lock"></i> Arrangører
+                        <i class="fa fa-user-lock"></i> Administratorer
                     <% end %>
                 </li>
-          
+               <li class="<%= is_active_controller('admin/organizations') %>">
+                    <%= link_to admin_organizations_path do %>
+                        <i class="fa fa-user-lock"></i> Arrangører
+                    <% end %>
+                </li>          
                 </li>
-
+                <li class="<%= is_active_controller('admin/categories') %>">
+                    <%= link_to admin_categories_path do %>
+                        <i class="fa fa-images"></i> Kategorier
+                    <% end %>                    
+                </li>
                 <li class="<%= is_active_controller('admin/events') %>">
                     <%= link_to admin_events_path do %>
                         <i class="fa fa-images"></i> Aktiviteter
@@ -46,7 +54,11 @@
                         <i class="fa fa-tag"></i> Tags
                     <% end %>                    
                 </li>
-                  
+                <li class="<%= is_active_controller('admin/articles') %>">
+                    <%= link_to admin_articles_path do %>
+                        <i class="fa fa-images"></i> Artikler
+                    <% end %>                    
+                </li>                  
             </ul>
 
         </div>

@@ -10,10 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181129121953) do
+ActiveRecord::Schema.define(version: 20181203180531) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "articles", force: :cascade do |t|
+    t.string "title"
+    t.string "summary"
+    t.text "content"
+    t.string "image"
+    t.boolean "publish"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_articles_on_user_id"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "image"
+    t.string "ancestry"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["ancestry"], name: "index_categories_on_ancestry"
+  end
 
   create_table "event_tags", force: :cascade do |t|
     t.bigint "event_id"
@@ -36,6 +58,11 @@ ActiveRecord::Schema.define(version: 20181129121953) do
     t.datetime "updated_at", null: false
     t.boolean "publish"
     t.string "image"
+    t.string "location"
+    t.bigint "category_id"
+    t.bigint "organization_id"
+    t.index ["category_id"], name: "index_events_on_category_id"
+    t.index ["organization_id"], name: "index_events_on_organization_id"
     t.index ["user_id"], name: "index_events_on_user_id"
   end
 
@@ -45,6 +72,15 @@ ActiveRecord::Schema.define(version: 20181129121953) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["event_id"], name: "index_images_on_event_id"
+  end
+
+  create_table "organizations", force: :cascade do |t|
+    t.string "name"
+    t.string "contactperson"
+    t.string "username"
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "tags", force: :cascade do |t|
@@ -62,8 +98,11 @@ ActiveRecord::Schema.define(version: 20181129121953) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "articles", "users"
   add_foreign_key "event_tags", "events"
   add_foreign_key "event_tags", "tags"
+  add_foreign_key "events", "categories"
+  add_foreign_key "events", "organizations"
   add_foreign_key "events", "users"
   add_foreign_key "images", "events"
 end

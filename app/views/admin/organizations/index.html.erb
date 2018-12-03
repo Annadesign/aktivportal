@@ -1,0 +1,39 @@
+<div class="ibox">
+	<div class="ibox-title"><h2><i class="fa fa-user-lock"></i> Arrangører</h2></div>
+    <div class="ibox-content">
+        <div class="panel-body">
+			<table class="table table-bordered table-hover">
+				<thead>
+					<tr>
+						<th>Navn</th>
+						<th>Kontaktperson</th>
+						
+						<th colspan="2">Handlinger</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @organizations.each do |organization| %>
+					<tr>
+						<td><%= organization.name %></td>
+						<td><%= organization.contactperson %></td>
+						
+						<td>
+							<%= link_to 'Endre', edit_admin_organization_path(organization), :class => 'btn btn-info btn-xs' %>
+						</td>
+						<td>
+							<%= link_to 'Slette', "#", :class => 'btn btn-danger btn-xs' %>
+								
+							</td>
+					</tr>
+					<% end %>
+				</tbody>
+			</table>
+			<br>
+			<%= link_to 'Ny arrangør', new_admin_organization_path, :class => 'btn btn-primary' %>
+		</div>
+	</div>
+</div>
+
+
+
+

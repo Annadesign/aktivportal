@@ -12,7 +12,7 @@ module Admin::AncestryHelper
       :li_class             => [],
       :li_class_top         => [],
       :li_class_children    => [],
-      :sort_by              => ['sortorder']
+      :sort_by              => ['id']
     }.merge(options)
 
     # setup any custom list styles you want to use here. An example is excluded
@@ -20,12 +20,12 @@ module Admin::AncestryHelper
     # options on different lists
     case options[:list_style]
       when :bootstrap_list_group
-       # options[:ul_class] << ['list-group']
-       # options[:li_class] << ['list-group-item']
+        options[:ul_class] << ['list-group']
+        options[:li_class] << ['list-group-item']
        #options[:ul_class_top] << ['dd-list-top']
        #options[:li_class_top] << ['dd-item-top']
-       options[:ul_class] << ['dd-list']
-       options[:li_class] << ['dd-item']        
+       #options[:ul_class] << ['dd-list']
+       #options[:li_class] << ['dd-item']        
     end
     options[:list_style] = ''
 
@@ -76,7 +76,7 @@ module Admin::AncestryHelper
       :li_class             => [],
       :li_class_top         => [],
       :li_class_children    => [],
-      :sort_by              => ['sortorder']
+      :sort_by              => ['id']
     }.merge(options)
 
     # setup any custom list styles you want to use here. An example is excluded
@@ -84,11 +84,11 @@ module Admin::AncestryHelper
     # options on different lists
     case options[:list_style]
       when :bootstrap_list_group
-       # options[:ul_class] << ['list-group']
-       # options[:li_class] << ['list-group-item']
+        options[:ul_class] << ['list-group']
+        options[:li_class] << ['list-group-item']
 
-       options[:ul_class] << ['list-group']
-       options[:li_class] << ['list-item']        
+       #options[:ul_class] << ['list-group']
+       #options[:li_class] << ['list-item']        
     end
     options[:list_style] = ''
 

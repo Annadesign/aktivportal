@@ -1,30 +1,32 @@
-<h1>Aktivportalen</h1>
-
-<h2>Aktiviteter</h2>
-
-<div class="container">  
-
-    <div class="row">
-        <% @events.each do |event| %>
-        <div class="col-sm-4 col-md-3">        
-            <div class="portfolio-item">
-            	<%=  link_to event_path(event) do  %>
-                  	<%= event.title %>
-                <% end %>  
-            </div>				
-			<div class="portfolio-desc">
-              	<p class="text-muted">
-					<div>
-			      		<% event.tags.each do |tag| %>
-			        		<%= link_to tag.name, events_path(tag: tag.name), :class => 'btn btn-tag btn-tag' %>
-			      		<% end %>
-			      	</div>     
-              	</p>
+     <section class="section-padding">
+        <div class="section-title text-center mb-5">
+            <h2>Siste aktiviteter</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        </div>
+        <div class="container">
+            <div class="row">
+            	<% @events.each do |event| %>
+               	<div class="col-lg-4 col-md-4">
+                  	<div class="card card-list">
+                     	<a href="#">
+                        	<span class="badge badge-success"><%= event.date %></span>
+                        	<%= image_tag eventt.image.url(:medium), :class => "card-img-top" if event.image? %>
+                        	<div class="card-body">
+                           		<h5 class="card-title"><%= event.title %></h5>
+                           		<h6 class="card-subtitle mb-2 text-muted">			      		
+                           			<%= event.summary %>
+			      				</h6>
+                        	</div>
+                        	<div class="card-footer">
+                       			<% event.tags.each do |tag| %>
+		        					<%= link_to tag.name, events_path(tag: tag.name), :class => 'btn btn-tag btn-tag' %>
+		      					<% end %>
+                        	</div>
+                     	</a>
+                  	</div>
+               	</div>
+               	<% end %>
             </div>
         </div>
-        <% end %>
-    </div>
-
-</div>
- 
+    </section>
 

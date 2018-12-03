@@ -19,13 +19,22 @@ Rails.application.routes.draw do
   	resources :dashboard, only: [:index]
     resources :sessions, only: [:index, :create, :destroy]
     resources :users, only: [:index, :new, :create, :edit, :update]
+    resources :articles, only: [:index, :new, :create, :edit, :update]
+    resources :organizations, only: [:index, :new, :create, :edit, :update]
     resources :events, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :tags, only: [:index, :new, :create, :edit, :update, :destroy]
+    resources :categories, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :images, only: [:index, :new, :create, :edit, :update, :destroy]
 
   end  
 # === END ADMINISTRATOR ===
 
+   resources :events do
+    collection do 
+      get :search, :action => 'search_event', :as => 'search_event'
+      get 'search/:q', :action => 'search', :as => 'search'
+    end
+  end
 
   resources :password_resets
 

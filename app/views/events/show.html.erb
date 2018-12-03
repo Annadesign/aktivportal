@@ -1,15 +1,19 @@
 
-	<%= render 'search', route: events_path %>
+	<%#= render 'search', route: events_path %>
 	
 
     <!-- post content + sidebar -->
+<div class="container">
     <section>
         <div class="row">
             <!-- post content area -->
             <div class="col-md-9">
-            	
+            	<h2><%= @event.title %></h2>
+            	<p><strong><%= @event.summary %></strong></p>
+            	<p><%= @event.content.html_safe %></p>
  			</div>
  
         </div><!-- / row -->
     </section>
     <!-- / post content + sidebar -->
+</div>
