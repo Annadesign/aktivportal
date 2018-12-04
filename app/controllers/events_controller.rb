@@ -31,7 +31,7 @@ class EventsController < ApplicationController
 
   def search_event
     params[:search].present?
-    @events = event.matching_title_or_content(params[:search])  
+    @events = Event.matching_title_or_content(params[:search])  
     render :layout => 'list_page'
   end
 end

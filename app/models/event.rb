@@ -6,7 +6,7 @@ class Event < ApplicationRecord
 	mount_uploader :image, ImageUploader
 
 	def self.matching_title_or_content search
-		where("publish=true AND title ILIKE ? OR content ILIKE ? OR metatags ILIKE ?", "%#{search}%", "%#{search}%", "%#{search}%")
+		where("publish=true AND title ILIKE ? OR summary ILIKE ? OR content ILIKE ?", "%#{search}%", "%#{search}%", "%#{search}%")
 	end
 
 	def self.filter_by_tags param_tag
