@@ -76,7 +76,7 @@
 
       <div class="panel-footer">
         <span class="text-muted small">
-          Publisert av: <% if @event.organization.present? %><%= @event.organization.name %><% end %><br>
+          Publisert av: <% if @event.user.present? %><%= @event.user.fullname %><% end %><br>
           Opprettet: <%= @event.created_at.to_s(:long) if @event.created_at? %><br>
           Sist oppdatert: <%= @event.updated_at.to_s(:long) if @event.updated_at? %>
         </span> 
