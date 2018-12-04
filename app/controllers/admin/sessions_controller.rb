@@ -3,7 +3,7 @@ class Admin::SessionsController < Admin::ApplicationController
 
 
   def new
-    redirect_to admin_dashboard_index_url if current_moderator
+    redirect_to admin_dashboard_index_url if current_user
   end
 
   def index

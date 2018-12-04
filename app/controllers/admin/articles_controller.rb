@@ -21,7 +21,7 @@ class Admin::ArticlesController < Admin::ApplicationController
     @article = Article.new(article_params)
     respond_to do |format|
       if @article.save
-        format.html { redirect_to admin_articles_url(:cat => @article.section_id), notice: 'Article was successfully created.' }
+        format.html { redirect_to admin_articles_url(), notice: 'Article was successfully created.' }
         format.json { render :show, status: :created, location: @article }
       else
         format.html { render :new }
@@ -33,7 +33,7 @@ class Admin::ArticlesController < Admin::ApplicationController
   def update
 
     if @article.update(article_params)
-      redirect_to admin_articles_url(:cat => @article.section_id), notice: 'Artikkelen: ' + article_params[:title] + ' ble oppdatert!'
+      redirect_to admin_articles_url(), notice: 'Artikkelen: ' + article_params[:title] + ' ble oppdatert!'
     else
       flash[:alert] = 'Det var et problem med oppdateringen'
       render :edit
@@ -44,7 +44,7 @@ class Admin::ArticlesController < Admin::ApplicationController
   def destroy
     @article = Article.find(params[:id])
     @article.destroy
-    redirect_to admin_articles_url(:cat => @article.section_id), notice: 'Artikkelen ble slettet!'
+    redirect_to admin_articles_url(), notice: 'Artikkelen ble slettet!'
   end
 
   private
