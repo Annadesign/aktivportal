@@ -1,0 +1,43 @@
+
+<%= render 'search', route: events_path %>
+
+<div class="row mt-5">
+
+	<div class="col-sm-12">
+		<h4 class="primary-font"><%= @events.count%> emner funnet for <i><%=params[:search] %></i></h4>
+		
+		<% if @events.present? %>
+		<table class="table table-responsive">
+			<tbody>
+			<% @events.each do |post| %>	
+			<tr>
+			  <td>
+			    <%= image_tag post.image.url(:thumb), :class => "img-responsive" if post.image? %>  
+			  </td>
+			  <td>
+			    <div class="item">
+			    	<strong>
+			      	<%=  link_to event_path(post) do  %>
+						<%= post.title %>
+					<% end %>
+					</strong>
+					
+					<% @string = post.content.html_safe %>
+			      	<p class="text-muted"><%= truncate(@string, separator: /\s/, :length => 180, :omission => "...", :escape => false) %></p>
+			    </div>
+			  </td>
+			
+			</tr>
+			<% end %>
+			</tbody>
+		</table>
+		<% else %>
+			<p>Fant ingen resultater for: <i><%=params[:search] %></i></p>
+		<% end %>
+	</div>
+	
+</div>
+
+
+
+
