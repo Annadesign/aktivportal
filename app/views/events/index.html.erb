@@ -19,7 +19,7 @@
                         	</div>
                         	<div class="card-footer">
                        			<% event.tags.each do |tag| %>
-		        					<%= link_to tag.name, events_path(tag: tag.name), :class => 'btn btn-sm btn-info' %>
+		        					<%= link_to tag.name, events_path(tag: tag.name), :class => 'badge badge-info' %>
 		      					<% end %>
                         	</div>
                      	</a>
