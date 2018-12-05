@@ -1,19 +1,63 @@
 
-	<%#= render 'search', route: events_path %>
-	
 
-    <!-- post content + sidebar -->
-<div class="container">
-    <section>
-        <div class="row">
-            <!-- post content area -->
-            <div class="col-md-9">
-            	<h2><%= @event.title %></h2>
-            	<p><strong><%= @event.summary %></strong></p>
-            	<p><%= @event.content.html_safe %></p>
- 			</div>
- 
-        </div><!-- / row -->
-    </section>
-    <!-- / post content + sidebar -->
-</div>
+<section class="section-padding">
+ <div class="container">
+    <div class="row">
+       <div class="col-lg-5 col-md-5">
+            <img class="rounded img-fluid" src="img/agent.jpg" alt="Card image cap">
+        </div>
+        <div class="col-lg-7 col-md-7 pl-5 pr-5">
+            <h1 class="mb-0 mt-4"><%= @event.title %></h1>
+            <h5 class="text-success mb-3"><%= @event.summary %></h5>
+            <p><%= @event.content.html_safe %></p>
+            <div class="row mt-3">
+               <div class="col-lg-12 col-md-12">
+                <% @event.tags.each do |tag| %>
+                    <%= link_to tag.name, events_path(tag: tag.name), :class => 'badge badge-info' %>
+                <% end %>
+               </div>
+              
+            </div>
+            <div class="footer-social mt-5"><span></span>
+                <div id="map" style="width:100%;height:300px"></div>
+            </div>
+        </div>
+      </div>
+    </div>
+</section>
+
+<script type="text/javascript">
+
+      function initMap() {
+        var aktivstart = {lat: <%= @event.lat %>, lng: <%= @event.lng %>};
+
+        var map = new google.maps.Map(document.getElementById('map'), {
+          center: aktivstart,
+          zoom: 11
+        });
+
+    
+
+
+        // Create a marker and set its position.
+          var marker<%= @event.id %> = new google.maps.Marker({
+            map: map,
+            position: {lat:<%= @event.lat %>, lng:<%= @event.lng %>},
+            title: '<%= @event.title %>',
+            icon: {
+              url: "http://maps.google.com/mapfiles/ms/icons/red-dot.png",
+              labelOrigin: new google.maps.Point(20, 38),
+              size: new google.maps.Size(32,32),
+              anchor: new google.maps.Point(16,32)
+            },
+            label: {
+              text: "<%= @event.title %>"
+            }
+
+          });
+       
+      }
+
+  </script>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_GEwouXTQg2YWEavFAE3R4uZpouYiK0U&callback=initMap" async defer></script>

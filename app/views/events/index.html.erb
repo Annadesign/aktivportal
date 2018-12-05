@@ -8,7 +8,7 @@
             	<% @events.each do |event| %>
                	<div class="col-lg-4 col-md-4">
                   	<div class="card card-list">
-                     	<a href="#">
+                     	<a href="/events/<%= event.id %>">
                         	<span class="badge badge-success"><%= event.date %></span>
                         	<%= image_tag event.image.url(:medium), :class => "card-img-top" if event.image? %>
                         	<div class="card-body">
