@@ -1,42 +1,48 @@
+    <section class="section-padding">
+        <div class="container">
+            <div class="row">
+            
+				<% if @events.present? %>
+				<h4 class="primary-font"><%= @events.count%> emner funnet for <i><%=params[:search] %></i></h4>
+				
+					<% @events.each do |post| %>
+				    <div class="col-lg-12 col-md-12">
+	                  <div class="card card-list card-list-view">
+	                     <a href="#">
+						 <div class="row no-gutters">
+						 
+	                       <div class="col-lg-4 col-md-4">					 
+	                        <span class="badge badge-primary"><%= post.date %></span>
+	                        <%= image_tag post.image.url(:medium), :class => "card-img-top" if post.image? %>
+	                        
+						</div>	
+							<div class="col-lg-8 col-md-8">
+	                        <div class="card-body">
+	                           <h3><%= post.title %></h3>
+	                           <h6 class="card-subtitle mt-1 mb-4 text-muted"><i class="fa fa-map-marker"></i> 127 Kent Sreet, Sydny, NEW 2000</h6>
+	                           <p class="mb-0"><%= post.summary %></p>
+	                        </div>
+	                        <div class="card-footer">
+	                           <span><i class="mdi mdi-phone"></i></span>
+	                           <span><i class="mdi mdi-email"></i></span>
+	                           <span><i class="mdi mdi-link"></i></span>
+	                        </div>
+							</div>
+							
+						</div>	
+	                     </a>
+	                  </div>
+	                </div>
+	                <% end %>
+				<% else %>
+					<h4>Fant ingen resultater for: <i><%=params[:search] %></i></h4>
+				<% end %>
 
-<%= render 'search', route: events_path %>
+			</div>
+		</div>
+	</section>
 
-<div class="row mt-5">
 
-	<div class="col-sm-12">
-		<h4 class="primary-font"><%= @events.count%> emner funnet for <i><%=params[:search] %></i></h4>
-		
-		<% if @events.present? %>
-		<table class="table table-responsive">
-			<tbody>
-			<% @events.each do |post| %>	
-			<tr>
-			  <td>
-			    <%= image_tag post.image.url(:thumb), :class => "img-responsive" if post.image? %>  
-			  </td>
-			  <td>
-			    <div class="item">
-			    	<strong>
-			      	<%=  link_to event_path(post) do  %>
-						<%= post.title %>
-					<% end %>
-					</strong>
-					
-					<% @string = post.content.html_safe %>
-			      	<p class="text-muted"><%= truncate(@string, separator: /\s/, :length => 180, :omission => "...", :escape => false) %></p>
-			    </div>
-			  </td>
-			
-			</tr>
-			<% end %>
-			</tbody>
-		</table>
-		<% else %>
-			<p>Fant ingen resultater for: <i><%=params[:search] %></i></p>
-		<% end %>
-	</div>
-	
-</div>
 
 
 
