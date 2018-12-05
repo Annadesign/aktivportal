@@ -21,6 +21,7 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :new, :create, :edit, :update]
     resources :articles, only: [:index, :new, :create, :edit, :update]
     resources :organizations, only: [:index, :new, :create, :edit, :update]
+    resources :providers, only: [:index, :new, :create, :edit, :update]
     resources :events, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :tags, only: [:index, :new, :create, :edit, :update, :destroy]
     resources :categories, only: [:index, :new, :create, :edit, :update, :destroy]

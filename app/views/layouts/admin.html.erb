@@ -49,6 +49,11 @@
                         <i class="fa fa-images"></i> Aktiviteter
                     <% end %>                    
                 </li>
+                <li class="<%= is_active_controller('admin/providers') %>">
+                    <%= link_to admin_providers_path do %>
+                        <i class="fa fa-images"></i> API
+                    <% end %>                    
+                </li>
                 <li class="<%= is_active_controller('admin/tags') %>">
                     <%= link_to new_admin_tag_path do %>
                         <i class="fa fa-tag"></i> Tags

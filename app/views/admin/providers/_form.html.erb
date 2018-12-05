@@ -1,0 +1,30 @@
+<%= form_for [:admin, @provider] do |f| %>
+  <% if @provider.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@provider.errors.count, "error") %> prohibited this admin_category from being saved:</h2>
+
+      <ul>
+      <% @provider.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+  <div class="form-group">
+    <%= f.label :title, 'Navn på tilbyder', :class => "" %>
+    <%= f.text_field :title, :class => 'form-control', :placeholder => "Navn på api tilbyder" %>
+  </div>
+ 
+  <div class="form-group">
+    <%= f.label :apiurl, 'API URL', :class => "" %>
+    <%= f.text_field :apiurl, :class => 'form-control', :placeholder => "api url" %>
+  </div>
+  <div class="form-group">
+    <%= f.label :apikey, 'API KEY', :class => "" %>
+    <%= f.text_field :apikey, :class => 'form-control', :placeholder => "api key" %>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Lagre kategori', :class => 'btn btn-primary' %>
+  </div>
+<% end %>
