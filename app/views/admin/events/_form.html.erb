@@ -245,7 +245,7 @@
   <script type="text/javascript">
 
       function initMap() {
-        var aktiv = {lat: 62.740057, lng: 7.155903};
+        var aktiv = {lat: <%= @event.lat %>, lng: <%= @event.lng %>};
 
         var map = new google.maps.Map(document.getElementById('map'), {
           center: aktiv,
