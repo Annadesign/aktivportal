@@ -10,8 +10,7 @@ class Admin::EventsController < Admin::ApplicationController
   end
 
   def new
-    @events = Event.all
- 
+    @events = Event.all 
     @event = Event.new 
 
   end

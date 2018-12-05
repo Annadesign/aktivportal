@@ -26,6 +26,7 @@ class Admin::TagsController < Admin::ApplicationController
   end
 
   def show
+    
   end
 
   def destroy
