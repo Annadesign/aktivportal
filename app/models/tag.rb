@@ -3,6 +3,8 @@ class Tag < ApplicationRecord
 	
 	validates :name, presence: true
 
+	scope :promote, -> { where(promote: true).order(name: :asc) }
+
 	def in_use?
 		EventTag.exists?(tag_id: self.id)
 	end	

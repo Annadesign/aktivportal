@@ -18,20 +18,24 @@ class EventsController < ApplicationController
  
     end    
     #render :layout => 'list_page'
+      @tags = Tag.promote
   end
 
   def home
-    @events = Event.all      
+    @events = Event.all  
+    @tags = Tag.promote    
   end
 
   def show
     @event = Event.find(params[:id])
     #render :layout => 'show_page'
+    @tags = Tag.promote
   end
 
   def search_event
     params[:search].present?
     @events = Event.matching_title_or_content(params[:search])  
    # render :layout => 'list_page'
+     @tags = Tag.promote
   end
 end

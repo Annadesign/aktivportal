@@ -264,7 +264,16 @@
         });
         marker.addListener('click', function() {
           infowindow.open(map, marker);
-        });        
+        }); 
+        map.addListener('click', function(e) {
+          //placeMarkerAndPanTo(e.latLng);
+      });       
+      }
+
+
+      function placeMarkerAndPanTo(latLng) {
+          var vlat = document.getElementById('event_lat');
+          vlat.value = latLng;
       }
 
   </script>
