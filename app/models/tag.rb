@@ -8,4 +8,7 @@ class Tag < ApplicationRecord
 	def in_use?
 		EventTag.exists?(tag_id: self.id)
 	end	
+
+	mount_uploader :image, ImageUploader
+	
 end
