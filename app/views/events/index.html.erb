@@ -38,7 +38,7 @@
 
 <script type="text/javascript">
 	<% if params[:tag] %>
-    document.getElementById("bgimg").style.backgroundImage = "url(<%= @tag.image.url(:large) if @tag.image? %>)";
+    document.getElementById("bgimg").style.backgroundImage = "url(<%= @tag.image.url if @tag.image? %>)";
     <% end %>
 </script>
  <script type="text/javascript">
