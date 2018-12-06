@@ -39,6 +39,6 @@ class Admin::TagsController < Admin::ApplicationController
   private
 
   def tags_params
-    params.require(:tag).permit(:id, :name, :promote, :sortorder)
+    params.require(:tag).permit(:id, :name, :promote, :sortorder, :image)
   end
 end
