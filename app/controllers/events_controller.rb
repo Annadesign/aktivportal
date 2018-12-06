@@ -7,6 +7,8 @@ class EventsController < ApplicationController
  
       @events = Event.filter_by_tags(params[:tag])
 
+      @tag = Tag.find_by_name(params[:tag])
+
     elsif
 
       params[:search].present?
@@ -19,6 +21,7 @@ class EventsController < ApplicationController
     end    
     #render :layout => 'list_page'
       @tags = Tag.promote
+
   end
 
   def home
