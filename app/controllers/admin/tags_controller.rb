@@ -1,7 +1,7 @@
 class Admin::TagsController < Admin::ApplicationController
   def new
     @tag = Tag.new
-    @tags = Tag.all.order(id: :asc)
+    @tags = Tag.all.order(sortorder: :asc)
   end
 
   def create
@@ -26,7 +26,7 @@ class Admin::TagsController < Admin::ApplicationController
   end
 
   def show
-    
+
   end
 
   def destroy
@@ -39,6 +39,6 @@ class Admin::TagsController < Admin::ApplicationController
   private
 
   def tags_params
-    params.require(:tag).permit(:id, :name, :promote)
+    params.require(:tag).permit(:id, :name, :promote, :sortorder)
   end
 end

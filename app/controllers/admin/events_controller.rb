@@ -4,7 +4,6 @@ class Admin::EventsController < Admin::ApplicationController
     if params[:search].present?
       @events = Event.matching_title_or_content(params[:search])
     else
- 
        @events = Event.all
     end
   end
@@ -57,7 +56,7 @@ class Admin::EventsController < Admin::ApplicationController
   private
 
   def event_params
-    params.require(:event).permit(:id, :title, :summary, :content, :date, :lng, :lat, :location, :user_id, :publish, :image, :category_id, tag_ids: [])
+    params.require(:event).permit(:id, :title, :summary, :content, :date, :date_range, :start, :end, :lng, :lat, :location, :user_id, :publish, :image, :category_id, tag_ids: [])
   end
 
 end

@@ -14,8 +14,9 @@
 				<thead>
 					<tr>
 						<th>Navn</th>
+						<th>Promote</th>
+						<th>Sortering</th>
 						<th>Status</th>
-						
 						<th>Handlinger</th>
 					</tr>
 				</thead>
@@ -23,6 +24,8 @@
 					<% @tags.each do |tag| %>
 					<tr>
 						<td><%= tag.name %></td>
+						<td><%= tag.promote %></td>
+						<td><%= tag.sortorder %></td>
 						<td><%= status_converter(tag.in_use?, truthy: 'I bruk', falsey: 'Ikke i bruk') %></td>
 						<td>
 							<%= link_to edit_admin_tag_path(tag) do %>

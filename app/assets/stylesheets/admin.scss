@@ -2,7 +2,7 @@
 /*
  * Manifest file for admin styles, to be compiled into admin.scss
  *
-
+ *= require fullcalendar
  *= require admin-custom
  *= require_self
  *= require_tree ./admin
