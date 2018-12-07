@@ -24,7 +24,10 @@
                	<div class="col-lg-4 col-md-4">
                   	<div class="card card-list">
                      	<a href="/events/<%= event.id %>">
-                        	<span class="badge badge-success"><%= event.date %></span>
+                        	<span class="badge badge-success" style="padding:5px;font-size:14px;">
+                        		<%= event.date.strftime("%d") %><br>
+                        		<%= event.date.strftime("%b").upcase %>	
+                        	</span>
                         	<%= image_tag event.image.url(:medium), :class => "card-img-top" if event.image? %>
                         	<div class="card-body">
                            		<h5 class="card-title"><%= event.title %></h5>
