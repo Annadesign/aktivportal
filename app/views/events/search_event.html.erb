@@ -1,11 +1,9 @@
     <section class="section-padding">
         <div class="container">
 
-            <div class="row">
-            
+            <div class="row">            
 				<% if @events.present? %>
 				<h4 class="primary-font"><%= @events.count%> emner funnet for <i><%=params[:search] %></i></h4>
-			
 					<% @events.each do |post| %>
 				    <div class="col-lg-12 col-md-12">
 	                  <div class="card card-list card-list-view">

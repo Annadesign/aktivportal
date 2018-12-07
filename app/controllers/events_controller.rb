@@ -37,7 +37,7 @@ class EventsController < ApplicationController
 
   def search_event
     params[:search].present?
-    @events = Event.matching_title_or_content(params[:search])  
+    @events = Event.matching_title_or_content(params[:search]).order('date ASC')
    # render :layout => 'list_page'
      @tags = Tag.promote
   end
