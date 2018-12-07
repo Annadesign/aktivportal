@@ -4,7 +4,7 @@
             <div class="row">
             
 				<% if @events.present? %>
-				<h4 class="primary-font"><%= @events.count%> aktiviteter funnet for <i><%=params[:search] %></i></h4>
+				<h4 class="primary-font"><%= @events.count%> emner funnet for <i><%=params[:search] %></i></h4>
 			
 					<% @events.each do |post| %>
 				    <div class="col-lg-12 col-md-12">
@@ -13,10 +13,9 @@
 						 <div class="row no-gutters">
 						 
 	                       <div class="col-lg-4 col-md-4">					 
-	                        <span class="badge badge-success" style="padding:5px;font-size:14px;">
-                        		<%= post.date.strftime("%d") %><br>
-                        		<%= post.date.strftime("%b").upcase %>	
-                        	</span>
+	                        <span class="badge badge-primary">
+								<%= post.date.strftime("%d") %>. <%= post.date.strftime("%B") %>
+	                        </span>
 	                        <%= image_tag post.image.url(:medium), :class => "card-img-top" if post.image? %>
 	                        
 						</div>	
@@ -76,7 +75,7 @@
             position: {lat:<%= event.lat %>, lng:<%= event.lng %>},
             title: '<%= event.title %>',
             icon: {
-              url: "http://maps.google.com/mapfiles/ms/icons/red-dot.png",
+              url: "http:s//maps.google.com/mapfiles/ms/icons/red-dot.png",
               labelOrigin: new google.maps.Point(20, 38),
               size: new google.maps.Size(32,32),
               anchor: new google.maps.Point(16,32)
