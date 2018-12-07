@@ -14,24 +14,20 @@
 						 
 	                       <div class="col-lg-4 col-md-4">					 
 	                        <span class="badge badge-primary">
-								<%= post.date.strftime("%d") %>. <%= post.date.strftime("%B") %>
+	                        	<%= post.date.strftime("%d") %>. <%= post.date.strftime("%B").upcase %>	
 	                        </span>
 	                        <%= image_tag post.image.url(:medium), :class => "card-img-top" if post.image? %>
 	                        
-						</div>	
+							</div>	
 							<div class="col-lg-8 col-md-8">
-	                        <div class="card-body">
-	                           <h3><%= post.title %></h3>
-	                           <h6 class="card-subtitle mt-1 mb-4 text-muted">
-	                           	<i class="fa fa-map-marker-alt"></i> <%= post.location %>
-	                           </h6>
-	                           <p class="mb-0"><%= post.summary %></p>
-	                        </div>
-	                        <div class="card-footer">
-                       			<% post.tags.each do |tag| %>
-		        					<%= link_to tag.name, events_path(tag: tag.name), :class => '' %>
-		      					<% end %>
-	                        </div>
+		                        <div class="card-body">
+		                           <h3><%= post.title %></h3>
+		                           <h6 class="card-subtitle mt-1 mb-4 text-muted">
+		                           	<i class="fa fa-map-marker-alt"></i> <%= post.location %>
+		                           </h6>
+		                           <p class="mb-0"><%= post.summary %></p>
+		                        </div>
+
 							</div>
 							
 						</div>	
@@ -75,7 +71,7 @@
             position: {lat:<%= event.lat %>, lng:<%= event.lng %>},
             title: '<%= event.title %>',
             icon: {
-              url: "http:s//maps.google.com/mapfiles/ms/icons/red-dot.png",
+              url: "https://maps.google.com/mapfiles/ms/icons/red-dot.png",
               labelOrigin: new google.maps.Point(20, 38),
               size: new google.maps.Size(32,32),
               anchor: new google.maps.Point(16,32)
