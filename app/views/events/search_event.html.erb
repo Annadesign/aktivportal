@@ -4,7 +4,7 @@
             <div class="row">
             
 				<% if @events.present? %>
-				<h4 class="primary-font"><%= @events.count%> emner funnet for <i><%=params[:search] %></i></h4>
+				<h4 class="primary-font"><%= @events.count%> aktiviteter funnet for <i><%=params[:search] %></i></h4>
 			
 					<% @events.each do |post| %>
 				    <div class="col-lg-12 col-md-12">
@@ -13,7 +13,10 @@
 						 <div class="row no-gutters">
 						 
 	                       <div class="col-lg-4 col-md-4">					 
-	                        <span class="badge badge-primary"><%= post.date %></span>
+	                        <span class="badge badge-success" style="padding:5px;font-size:14px;">
+                        		<%= post.date.strftime("%d") %><br>
+                        		<%= post.date.strftime("%b").upcase %>	
+                        	</span>
 	                        <%= image_tag post.image.url(:medium), :class => "card-img-top" if post.image? %>
 	                        
 						</div>	
@@ -26,9 +29,9 @@
 	                           <p class="mb-0"><%= post.summary %></p>
 	                        </div>
 	                        <div class="card-footer">
-	                           <span><i class="mdi mdi-phone"></i></span>
-	                           <span><i class="mdi mdi-email"></i></span>
-	                           <span><i class="mdi mdi-link"></i></span>
+                       			<% post.tags.each do |tag| %>
+		        					<%= link_to tag.name, events_path(tag: tag.name), :class => '' %>
+		      					<% end %>
 	                        </div>
 							</div>
 							
