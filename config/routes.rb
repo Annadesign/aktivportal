@@ -28,6 +28,12 @@ Rails.application.routes.draw do
     resources :images, only: [:index, :new, :create, :edit, :update, :destroy]
 
   end  
+
+  namespace 'api' do
+    namespace 'v1' do
+      resources :events
+    end
+  end
 # === END ADMINISTRATOR ===
 
    resources :events do
