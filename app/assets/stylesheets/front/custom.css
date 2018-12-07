@@ -533,6 +533,10 @@ nav.navbar .navbar-nav .nav-link {
     background-color: rgba(23, 160, 184, 0.17);
     color: #17a2b8;
 }
+.badge-info {
+    background-color: #2e6e84;
+    color: #fff;
+}
 .blog-card .badge-white {
     background-color: rgba(255, 255, 255, 0.81);
     color: #5c5de8;

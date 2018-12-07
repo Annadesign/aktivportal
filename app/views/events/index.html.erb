@@ -5,9 +5,20 @@
             		<span> - <%= params[:tag] %></span>
             	<% end %>
             </h2>
-            <p>"Bryt de dårlige vaner – og la motet føre deg ned av din egen sti"</p>
+            <p></p>
         </div>
         <div class="container">
+        	<!-- toolbar -->
+			<div class="osahan_top_filter row">
+			    <div class="col-lg-12 col-md-12 sort-by-btn float-right">
+			        <div class="view-mode float-right">
+			            <a href="#" class="active"><i class="fa fa-th"></i></a>
+			            <a href="#"><i class="fa fa-list"></i></a>
+			            <a href="#"><i class="fa fa-map-marker-alt"></i></a>
+			        </div>
+			    </div>
+			</div>        		
+        	<!-- /toolbar -->
             <div class="row">
             	<% @events.each do |event| %>
                	<div class="col-lg-4 col-md-4">

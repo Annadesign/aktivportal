@@ -9,7 +9,7 @@
  *= require jquery-ui/sortable
  *= require summernote
  *= require summernote-video-attributes
- *= require summernote.gallery
+ 
  *= require bootstrap
  *= require inspinia
  *= require moment.min
