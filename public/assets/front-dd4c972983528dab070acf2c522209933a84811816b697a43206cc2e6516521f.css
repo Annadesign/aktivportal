@@ -768,12 +768,6 @@
     transform: rotateY(180deg);
 }
 /*
-Template Name: Osahan Land - Bootstrap 4 Light Real Estate Theme
-Author: Askbootstrap
-Author URI: https://themeforest.net/user/askbootstrap
-Version: 1.0
-*/
-/*
 	-- body
 	-- Extra
 	-- Navbar
@@ -791,7 +785,7 @@ Version: 1.0
 	-- Property Single Gallery
 	-- Footer
 	-- Mobile Media
-    -- #ed3426  --#ed3426
+    -- #2e6e84 (rød ) --#2e6e84 ( blå )
 */
 
 
@@ -849,17 +843,23 @@ a:focus {
     font-size: 12px;
     font-weight: 400;
 }
+
+.promote {
+    padding:5px;
+    border-radius: 5px;
+    margin:5px 3px 0 0 ;
+}
 .dropdown-item.active, .dropdown-item:active {
     background-color: #43EBBC;
 }
 .page-item.active .page-link {
-    background-color: #ed3426;
-    border-color: #ed3426;
+    background-color: #2e6e84;
+    border-color: #2e6e84;
     color: #fff;
     z-index: 1;
 }
 .page-link {
-    color: #ed3426;
+    color: #2e6e84;
 }
 .box-shadow-none {
     border: 7px solid #fff !important;
@@ -983,35 +983,35 @@ label {
     padding: 100px 0;
 }
 .text-success {
-    color: #ed3426 !important;
+    color: #2e6e84 !important;
 }
 a.text-success:focus, a.text-success:hover {
-    color: #ed3426 !important;
+    color: #2e6e84 !important;
 }
 .btn-success {
-    background-color: #ed3426;
-    border-color: #ed3426;
+    background-color: #2e6e84;
+    border-color: #2e6e84;
     color: #fff;
 }
 .btn-success:hover, .btn-success:focus {
-    background-color: #ed3426;
-    border-color: #ed3426;
+    background-color: #2e6e84;
+    border-color: #2e6e84;
     color: #fff;
 }
 .btn-success.disabled, .btn-success:disabled {
-    background-color: #ed3426;
-    border-color: #ed3426;
+    background-color: #2e6e84;
+    border-color: #2e6e84;
     color: #fff;
 }
 .btn-outline-success {
     background-color: transparent;
     background-image: none;
-    border-color: #ed3426;
-    color: #ed3426;
+    border-color: #2e6e84;
+    color: #2e6e84;
 }
 .btn-outline-success:hover {
-    background-color: #ed3426;
-    border-color: #ed3426;
+    background-color: #2e6e84;
+    border-color: #2e6e84;
     color: #fff;
 }
 .btn-outline-success.focus, .btn-outline-success:focus {
@@ -1019,11 +1019,11 @@ a.text-success:focus, a.text-success:hover {
 }
 .btn-outline-success.disabled, .btn-outline-success:disabled {
     background-color: transparent;
-    color: #ed3426;
+    color: #2e6e84;
 }
 .btn-link {
     background-color: transparent;
-    color: #ed3426;
+    color: #2e6e84;
     font-weight: 400;
 }
 .demo-page .card.padding-card .card-body {
@@ -1292,9 +1292,14 @@ nav.navbar .navbar-nav .nav-link {
     background-color: rgba(52, 58, 64, 0.19);
     color: #343a40;
 }
+
 .blog-card .badge-info {
     background-color: rgba(23, 160, 184, 0.17);
     color: #17a2b8;
+}
+.badge-info {
+    background-color: #2e6e84;
+    color: #fff;
 }
 .blog-card .badge-white {
     background-color: rgba(255, 255, 255, 0.81);
