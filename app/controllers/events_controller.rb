@@ -16,7 +16,7 @@ class EventsController < ApplicationController
 
     else
   
-      @events = Event.all.where(:publish => true).order(:id => :asc)
+      @events = Event.all.where(:publish => true).order(:start => :asc)
  
     end    
     #render :layout => 'list_page'
