@@ -1,4 +1,4 @@
-#date_format = event.all_day_event? ? '%Y-%m-%d' : '%Y-%m-%dT%H:%M:%S'
+date_format = event.all_day_event? ? '%Y-%m-%d' : '%Y-%m-%dT%H:%M:%S'
 json.events @events
 
 json.id "#{event.id}"

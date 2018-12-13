@@ -15,23 +15,32 @@
 
     <div class="row">
       
-      <div class="col-md-9">      
+      <div class="col-md-8">      
         <div class="form-group">
           <%= f.label :title, 'Tittel', :class => "" %>
           <%= f.text_field :title, :class => 'form-control', :placeholder => "Tittel" %>
         </div>
       </div>
  
-      <div class="col-md-3">
+      <div class="col-md-2">
         <div class="form-group" id="data_0">
-          <%= f.label :date, 'Dato', :class => "" %>
+          <%= f.label :start, 'Start dato', :class => "" %>
           <div class="input-group date">
             <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
-            <%= f.text_field :date, :class => 'form-control' %>
+            <%= f.text_field :start, :class => 'form-control' %>
           </div>
-        </div>
-      
-      </div>  
+        </div>      
+      </div> 
+      <div class="col-md-2">
+        <div class="form-group" id="data_0">
+          <%= f.label :end, 'Slutt dato', :class => "" %>
+          <div class="input-group date">
+            <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+            <%= f.text_field :end, :class => 'form-control' %>
+          </div>
+        </div>      
+      </div> 
+
     </div>
     <div class="row">
       <div class="col-md-6">
