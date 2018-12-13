@@ -30,7 +30,7 @@
                         		<%= event.start.strftime("%d") %><br>
                         		<%= event.start.strftime("%b").upcase %>	
                         	</span>
-                        	<div class="thumbnail">
+                        	<div class="">
                         		<%= image_tag event.image.url(:medium), :class => "card-img-top portrait" if event.image? %>
                         	</div>
                         	<div class="card-body">
