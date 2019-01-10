@@ -6,7 +6,7 @@ class Event < ApplicationRecord
 	mount_uploader :image, ImageUploader
 
 	def self.matching_title_or_content search
-		where("publish=true AND title ILIKE ? OR summary ILIKE ? OR content ILIKE ?", "%#{search}%", "%#{search}%", "%#{search}%")
+		where("publish=true AND title ILIKE ? OR summary ILIKE ? OR content ILIKE ?", "%#{search}%", "%#{search}%", "%#{search}%").order(start: :asc)
 	end
 
 	def self.xmatching_title_or_content search
@@ -18,3 +18,6 @@ class Event < ApplicationRecord
 	end
 	
 end
+
+
+

@@ -39,7 +39,7 @@ class Admin::UsersController < Admin::ApplicationController
 	end
 
 	private
-		def moderator_params
+		def user_params
 			params.require(:user).permit(:fullname, :username, :password)
 		end
 end
